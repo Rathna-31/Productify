@@ -47,6 +47,8 @@ app.get('/', (req, res) => {
 
 
 app.post('/task', async(req, res) => {
+
+    console.log("Request Body : ",req.body);
     const newTask = {
         taskName: req.body.taskName,
         timeSpent: req.body.timeSpent,
@@ -65,6 +67,7 @@ const saveLogs = async(taskDetails,response)=>{
   try{
 
     const dataStore = await Task.create(taskDetails);
+    console.log(dataStore);
 
     response.redirect('/');
 
